@@ -13,9 +13,9 @@ cd setup
 sudo cp uvicorn.service /etc/systemd/system/
 sudo systemctl enable uvicorn.service
 sudo systemctl start uvicorn.service
-sudo cp cockpit.service /etc/systemd/system/
 sudo systemctl enable cockpit.service
 sudo systemctl start cockpit.service
+
 
 
 
