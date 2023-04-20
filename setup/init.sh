@@ -6,7 +6,7 @@
 # Update Package
 sudo apt update
 sudo apt install -y git python3-pip cockpit
-git clone https://github.com/mu7889yoon/py2m5lcd.git
+git clone -b develop https://github.com/mu7889yoon/py2m5lcd.git
 cd py2m5lcd
 pip3 install -r requirements.txt
 cd setup
