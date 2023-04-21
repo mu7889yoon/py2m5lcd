@@ -15,7 +15,7 @@ sudo systemctl enable uvicorn.service
 sudo systemctl start uvicorn.service
 sudo systemctl enable cockpit.service
 sudo systemctl start cockpit.service
-curl http://localhost:8000/send/Setup%20Complete
+curl http://localhost:8080/send/Setup%20Complete
 
 
 
