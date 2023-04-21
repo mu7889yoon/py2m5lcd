@@ -1,15 +1,14 @@
 [Unit]
 Description=The uvicorn process
-Before=nginx.service
 After=network.target remote-fs.target nss-lookup.target
 
 [Service]
-User=www-data
-Group=www-data
+User=pi
+Group=pi
 WorkingDirectory=/home/pi/py2m5lcd
 
 
-ExecStart=/usr/local/bin/uvicorn sendStr:app --host 0.0.0.0 --port 8080
+ExecStart=/usr/bin/python3 -m uvicorn sendStr:app --host 0.0.0.0 --port 8080
 ExecReload = /bin/kill -s HUP $MAINPID
 ExecStop = /bin/kill -s TERM $MAINPID
 
