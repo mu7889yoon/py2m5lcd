@@ -1,0 +1,16 @@
+[Unit]
+Description=The uvicorn process
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/py2m5lcd
+
+
+ExecStart=/usr/bin/python3 -m uvicorn sendStr:app --host 0.0.0.0 --port 8080
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
