@@ -29,7 +29,7 @@
 9. SSH で Raspberry Pi にログインする。
 10. 以下のコマンドを実行し、セットアップを開始する。
 ```
-$ wget https://raw.githubusercontent.com/mu7889yoon/py2m5lcd/develop/setup/init.sh
+$ wget https://raw.githubusercontent.com/mu7889yoon/py2m5lcd/main/setup/init.sh
 $ bash init.sh
 ```
 11. M5stickCのLCDに、```Setup Complete```と表示されたら、セットアップ完了。
