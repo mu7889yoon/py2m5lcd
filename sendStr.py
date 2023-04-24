@@ -6,6 +6,9 @@ import serial
 import os
 # ホストネームを取得するためのライブラリ
 import socket
+# ログを出力するためのライブラリ
+from logging import getLogger
+logger = getLogger(__name__)
 
 app = FastAPI()
 
@@ -29,11 +32,18 @@ def validateStr(str):
 @app.get("/send/{str}")
 def sendStr(str: str):
     if not validateStr(str):
-        return {"strings": "1バイト文字で入力してください(例 : 太郎 -> tarou)"}
-    ser = serial.Serial(ttyNo, 115200, timeout=1)
-    ser.write(str.encode())
-    print(str)
-    return {"strings": str}
+        logger.warning("Invalid string : {}".format(str))
+        return {"1バイト文字で入力してください(例 : 太郎 -> tarou)"}
+    if ttyNo == None:
+        logger.error("M5stick not found")
+        return {"M5stickが見つかりませんでした、接続されているか確認してください。"}
+    else:
+        # ser = serial.Serial(ttyNo, 115200, timeout=1)
+        # ser.write(str.encode())
+        logger.info("Send string : {}".format(str))
+        return {str}
 
 ttyNo = getM5Tty()
 sendStr(socket.gethostname())
+logger.info("M5stick serial port : {}".format(ttyNo))
+logger.info("Start Up Complete")
