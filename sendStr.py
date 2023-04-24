@@ -4,6 +4,8 @@ import uvicorn
 # M5stickとシリアル通信を行うためのライブラリ
 import serial
 import os
+# ホストネームを取得するためのライブラリ
+import socket
 
 app = FastAPI()
 
@@ -34,3 +36,4 @@ def sendStr(str: str):
     return {"strings": str}
 
 ttyNo = getM5Tty()
+sendStr(socket.gethostname())
