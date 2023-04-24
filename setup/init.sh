@@ -7,7 +7,7 @@
 sudo apt update
 sudo apt install -y git python3-pip cockpit
 # Clone Repository
-git clone -b Validation https://github.com/mu7889yoon/py2m5lcd.git
+git clone https://github.com/mu7889yoon/py2m5lcd.git
 cd py2m5lcd
 # Install Package
 pip3 install -r requirements.txt
