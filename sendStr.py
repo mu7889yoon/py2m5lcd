@@ -38,8 +38,8 @@ def sendStr(str: str):
         logger.error("M5stick not found")
         return {"M5stickが見つかりませんでした、接続されているか確認してください。"}
     else:
-        # ser = serial.Serial(ttyNo, 115200, timeout=1)
-        # ser.write(str.encode())
+        ser = serial.Serial(ttyNo, 115200, timeout=1)
+        ser.write(str.encode())
         logger.info("Send string : {}".format(str))
         return {str}
 
