@@ -16,12 +16,21 @@ def getM5Tty():
             return usbSerial
     return None
 
-ttyNo = getM5Tty()
+# 文字列のバリデーションを行う。Ascii文字のみ受け付ける
+def validateStr(str):
+    for c in str:
+        if ord(c) > 127:
+            return False
+    return True
 
 # getで受け取った文字列をM5stickに送信する
 @app.get("/send/{str}")
-def sendtr(str: str):
+def sendStr(str: str):
+    if not validateStr(str):
+        return {"strings": "1バイト文字で入力してください(例 : 太郎 -> tarou)"}
     ser = serial.Serial(ttyNo, 115200, timeout=1)
     ser.write(str.encode())
+    print(str)
     return {"strings": str}
 
+ttyNo = getM5Tty()
