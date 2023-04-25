@@ -14,4 +14,3 @@ void loop() {
     M5.Lcd.print(name+"\n");
   }
 }
-kimosugite naiteru
